@@ -8,6 +8,7 @@ export default function Home() {
 				<title>Amazon 2 Clone</title>
 			</Head>
 			{/* Header */}
+			<h2 className="bg-red-700 text-gray-700">Testing</h2>
 			<Header />
 		</div>
 	);

@@ -21,8 +21,9 @@ const Header = () => {
 					/>
 				</div>
 
-				<div>
-					<input type="text" />
+				<div className="bg-red-700">
+					<SearchIcon className="h-6 text-black" />
+					<input type="text" placeholder="test" className="bg-black" />
 				</div>
 			</div>
 
