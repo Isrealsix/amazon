@@ -37,11 +37,11 @@ const ProductFeed = ({ products }) => {
 						/>
 					))}
 			</div>
-
 			{products
 				.slice(5)
 				.map(({ title, id, price, description, category, image }) => (
 					<Product
+						id={id}
 						key={id}
 						title={title}
 						price={price}
