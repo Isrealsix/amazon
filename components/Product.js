@@ -6,7 +6,16 @@ import { addToBasket } from '../slices/basketSlice';
 
 const MAX_N = 5;
 const MIN_N = 1;
-const Product = ({ title, id, price, description, category, image }) => {
+const Product = ({
+	title,
+	id,
+	price,
+	description,
+	category,
+	image,
+	rating,
+	isPrime,
+}) => {
 	const dispatch = useDispatch();
 	const [rating] = useState(
 		Math.floor(Math.random() * (MAX_N - MIN_N + 1)) + MIN_N
@@ -21,6 +30,8 @@ const Product = ({ title, id, price, description, category, image }) => {
 			description,
 			category,
 			image,
+			rating,
+			isPrime,
 		};
 		dispatch(addToBasket(product));
 	};
