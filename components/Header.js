@@ -18,6 +18,8 @@ const Header = () => {
 		const path = location === '/' ? '/' : '/checkout';
 		router.push(path);
 	};
+
+	const totalItems = () => items.reduce((acc, curr) => curr.quantity + acc, 0);
 	return (
 		<header>
 			{/* Top */}
@@ -56,7 +58,7 @@ const Header = () => {
 						onClick={goTo.bind(null, '/checkout')}
 					>
 						<span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold">
-							{items.length}
+							{totalItems()}
 						</span>
 						<ShoppingCartIcon className="h-10" />
 						<p className="hidden md:inline font-extrabold md:text-sm mt-2">

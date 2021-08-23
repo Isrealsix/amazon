@@ -13,6 +13,7 @@ const CheckoutProduct = ({
 	category,
 	image,
 	isPrime,
+	quantity,
 }) => {
 	const dispatch = useDispatch();
 
@@ -66,6 +67,7 @@ const CheckoutProduct = ({
 
 			{/* RHS => Add/Remove Buttons */}
 			<div className="flex flex-col space-y-2 my-auto justify-self-end">
+				<p>x{quantity}</p>
 				<button className="button" onClick={addItemToBasket}>
 					Add to Basket
 				</button>

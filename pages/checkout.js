@@ -41,6 +41,7 @@ function Checkout() {
 								image={item.image}
 								price={item.price}
 								isPrime={item.isPrime}
+								quantity={item.quantity}
 							/>
 						))}
 					</div>
