@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
-import Header from '../components/Header';
-import { selectItems, selectTotal } from '../slices/basketSlice';
-import CheckoutProduct from '../components/CheckoutProduct';
-import { Currency } from 'react-currency-formatter';
+import Currency from 'react-currency-formatter';
 import { useSession } from 'next-auth/client';
-const Checkout = () => {
+import { selectItems, selectTotal } from '../slices/basketSlice';
+import Header from '../components/Header';
+import CheckoutProduct from '../components/CheckoutProduct';
+
+function Checkout() {
 	const items = useSelector(selectItems);
 	const session = useSession();
 	const total = useSelector(selectTotal);
@@ -24,18 +25,21 @@ const Checkout = () => {
 
 					<div className="flex flex-col p-5 space-y-10 bg-white">
 						<h1 className="text-3xl border-b  pb-4">
-							{!items.length ? 'Your Shopping Basket' : 'Shopping Basket'}
+							{!items.length
+								? 'Your Shopping Basket is empty'
+								: 'Shopping Basket'}
 						</h1>
 
 						{items.map((item, idx) => (
 							<CheckoutProduct
-								key={item.id}
+								key={idx}
 								id={item.id}
 								title={item.title}
 								rating={item.rating}
 								description={item.description}
 								category={item.category}
 								image={item.image}
+								price={item.price}
 								isPrime={item.isPrime}
 							/>
 						))}
@@ -48,9 +52,11 @@ const Checkout = () => {
 						<>
 							<h2 className="whitespace-nowrap">
 								Subtotal ({items.length} items):{' '}
-								<span className="font-bold">
-									<Currency quantity={total} currency="RUB" />
-								</span>
+								{
+									<span className="font-bold">
+										<Currency quantity={total} currency="RUB" />
+									</span>
+								}
 							</h2>
 
 							<button
@@ -68,6 +74,6 @@ const Checkout = () => {
 			</main>
 		</div>
 	);
-};
+}
 
 export default Checkout;

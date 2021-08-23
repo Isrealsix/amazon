@@ -1,6 +1,6 @@
-import { StarIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
-import { Currency } from 'react-currency-formatter';
+import { StarIcon } from '@heroicons/react/solid';
+import Currency from 'react-currency-formatter';
 import { useDispatch } from 'react-redux';
 import { addToBasket, removeFromBasket } from '../slices/basketSlice';
 
@@ -27,7 +27,7 @@ const CheckoutProduct = ({
 			image,
 			isPrime,
 		};
-		dispatch(addItemToBasket(product));
+		dispatch(addToBasket(product));
 	};
 
 	const removeItemFromBasket = () => {
@@ -49,8 +49,7 @@ const CheckoutProduct = ({
 				</div>
 
 				<p className="text-sx my-2 line-clamp-3">{description}</p>
-				<Currency quantity={price} currency="RUB" />
-
+				{<Currency quantity={price} currency="RUB" />}
 				{isPrime &
 				(
 					<div className="flex items-center space-x-2">
@@ -64,6 +63,7 @@ const CheckoutProduct = ({
 					</div>
 				)}
 			</div>
+
 			{/* RHS => Add/Remove Buttons */}
 			<div className="flex flex-col space-y-2 my-auto justify-self-end">
 				<button className="button" onClick={addItemToBasket}>
