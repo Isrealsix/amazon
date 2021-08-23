@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import Header from '../components/Header';
-import { selectItems } from '../slices/basketSlice';
+import { selectItems, selectTotal } from '../slices/basketSlice';
 import CheckoutProduct from '../components/CheckoutProduct';
 import { Currency } from 'react-currency-formatter';
 import { useSession } from 'next-auth/client';
 const Checkout = () => {
 	const items = useSelector(selectItems);
 	const session = useSession();
+	const total = useSelector(selectTotal);
 	return (
 		<div>
 			<Header />
