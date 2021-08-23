@@ -2,14 +2,28 @@ import { useState } from 'react';
 import Image from 'next/dist/client/image';
 import { StarIcon } from '@heroicons/react/solid';
 import Currency from 'react-currency-formatter';
+import { addToBasket } from '../slices/basketSlice';
 
 const MAX_N = 5;
 const MIN_N = 1;
 const Product = ({ title, id, price, description, category, image }) => {
+	const dispatch = useDispatch();
 	const [rating] = useState(
 		Math.floor(Math.random() * (MAX_N - MIN_N + 1)) + MIN_N
 	);
 	const [isPrime] = useState(Math.random() < 0.5);
+
+	const addItemToBasket = () => {
+		const product = {
+			title,
+			id,
+			price,
+			description,
+			category,
+			image,
+		};
+		dispatch(addToBasket(product));
+	};
 	return (
 		<div className="relative flex flex-col m-5 bg-white z-30 p-10">
 			<p className="absolute top-2 right-2 text-xs italic text-gray-400">
@@ -40,7 +54,9 @@ const Product = ({ title, id, price, description, category, image }) => {
 					<p className="text-xs text-gray-500">FRREE NEXT-day Delivery</p>
 				</div>
 			)}
-			<button className="mt-auto button">Add to Basket</button>
+			<button className="mt-auto button" onClick={addItemToBasket}>
+				Add to Basket
+			</button>
 		</div>
 	);
 };
