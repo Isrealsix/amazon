@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import Currency from 'react-currency-formatter';
-import { useSession } from 'next-auth/client';
+import { getSession, useSession } from 'next-auth/client';
 import { selectItems, selectTotal } from '../slices/basketSlice';
 import Header from '../components/Header';
 import CheckoutProduct from '../components/CheckoutProduct';
@@ -104,3 +104,13 @@ function Checkout() {
 }
 
 export default Checkout;
+
+export async function getServerSideProps(context) {
+	const session = await getSession(context);
+
+	return {
+		props: {
+			session,
+		},
+	};
+}
