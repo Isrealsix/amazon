@@ -1,5 +1,9 @@
 import Image from 'next/image';
-import { StarIcon } from '@heroicons/react/solid';
+import {
+	StarIcon,
+	MinusCircleIcon,
+	PlusCircleIcon,
+} from '@heroicons/react/solid';
 import Currency from 'react-currency-formatter';
 import { useDispatch } from 'react-redux';
 import { addToBasket, removeFromBasket } from '../slices/basketSlice';
@@ -66,13 +70,13 @@ const CheckoutProduct = ({
 			</div>
 
 			{/* RHS => Add/Remove Buttons */}
-			<div className="flex flex-col space-y-2 my-auto justify-self-end">
-				<p>x{quantity}</p>
-				<button className="button" onClick={addItemToBasket}>
-					Add to Basket
+			<div className="flex my-auto justify-self-end items-center">
+				<button className="button w-10" onClick={removeItemFromBasket}>
+					<MinusCircleIcon className="text-gray-800" />
 				</button>
-				<button className="button" onClick={removeItemFromBasket}>
-					Remove from Basket
+				<p className="flex items-center px-5 py-2 bg-gray-200">{quantity}</p>
+				<button className="button w-10" onClick={addItemToBasket}>
+					<PlusCircleIcon className="text-gray-800" />
 				</button>
 			</div>
 		</div>
