@@ -1,4 +1,5 @@
 // https://amazon-orpin.vercel.app/
+// https://amazon-d35v1p7i6-fb-zero.vercel.app/api/auth/signin/google
 import { getSession } from 'next-auth/client';
 import Head from 'next/head';
 import Banner from '../components/Banner';
