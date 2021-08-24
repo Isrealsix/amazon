@@ -8,7 +8,7 @@ import CheckoutProduct from '../components/CheckoutProduct';
 
 function Checkout() {
 	const items = useSelector(selectItems);
-	const session = useSession();
+	const [session] = useSession();
 	const total = useSelector(selectTotal);
 	return (
 		<div>
@@ -59,8 +59,9 @@ function Checkout() {
 									</span>
 								}
 							</h2>
-
+							{console.log(session)}
 							<button
+								role="link"
 								disabled={!session}
 								className={`button mt-2 ${
 									!session &&
