@@ -17,7 +17,7 @@ export const basketSlice = createSlice({
 				newBasket[sameItem].quantity++;
 			} else {
 				incoming.quantity = 1;
-				state.items = [...newBasket, incoming];
+				state.items = [incoming, ...newBasket];
 			}
 		},
 		removeFromBasket: (state, action) => {
